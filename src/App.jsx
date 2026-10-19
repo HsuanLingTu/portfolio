@@ -241,7 +241,7 @@ function App() {
       {/* Header */}
       <header className="relative z-50 flex items-center justify-between gap-6 px-8 py-6 md:px-16">
         <div className="flex min-w-0 items-center gap-5 md:gap-8">
-          <a href="#" className="inline-flex shrink-0 items-center">
+          <a href="index.html" className="inline-flex shrink-0 items-center">
             <img
               src={logo}
               alt="Personal logo"
@@ -404,42 +404,6 @@ function App() {
             heroRef={heroRef}
           />
         </div>
-      </section>
-
-      {/* Selected Work */}
-      <section
-        id="work"
-        className="border-t border-neutral-100 px-8 py-24 md:px-16"
-      >
-        <p className="mb-4 text-xs tracking-[0.25em] text-neutral-400 uppercase">
-          01 / Selected work
-        </p>
-
-        <h2 className="text-3xl font-light tracking-tight md:text-5xl">
-          Thoughtful work.
-          <br />
-          Tangible impact.
-        </h2>
-
-        <p className="mt-5 max-w-xl leading-7 text-neutral-500">
-          A selection of product design, interface experiments, and creative
-          projects. Case studies coming soon.
-        </p>
-      </section>
-
-      {/* About */}
-      <section
-        id="about"
-        className="border-t border-neutral-100 px-8 py-24 md:px-16"
-      >
-        <p className="mb-4 text-xs tracking-[0.25em] text-neutral-400 uppercase">
-          02 / About
-        </p>
-
-        <h2 className="max-w-3xl text-3xl leading-tight font-light tracking-tight md:text-5xl">
-          Curious about people, systems, and the space between technology and
-          creativity.
-        </h2>
       </section>
 
       {/* Contact */}
