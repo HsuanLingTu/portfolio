@@ -182,4 +182,27 @@
       animation-duration: 12s;
     }
   }
-  
+
+/* Pastel gradient social media logos */
+.social-logo-gradient {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+
+  background: linear-gradient(
+    110deg,
+    #F8D9E8 0%,
+    #E4DDFB 50%,
+    #D5EEFF 100%
+  );
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}

@@ -3,22 +3,32 @@ import Footer from './components/Footer.jsx'
 import { motion } from 'motion/react'
 import logo from './assets/main-logo.svg'
 import IgniteButton from './components/IgniteButton.jsx'
+import linkedinIcon from './assets/social/linkedin.svg'
+import threadsIcon from './assets/social/threads.svg'
+import instagramIcon from './assets/social/instagram.svg'
+import wroomIcon from './assets/social/wroom.svg'
+import portrait from './assets/portrait.png'
 
 const socialLinks = [
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/',
-    icon: 'in',
+    href: 'https://www.linkedin.com/in/hsuanlingtu/',
+    icon: linkedinIcon,
   },
   {
     name: 'Threads',
-    href: 'https://www.threads.net/',
-    icon: '@',
+    href: 'https://www.threads.com/@hsuanlingtu',
+    icon: threadsIcon,
   },
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/',
-    icon: 'ig',
+    href: 'https://www.instagram.com/hsuanlingtu/',
+    icon: instagramIcon,
+  },
+  {
+    name: 'Wroom',
+    href: 'https://hub.wroom.ai/en/huachong.author',
+    icon: wroomIcon,
   },
 ]
 
@@ -71,7 +81,7 @@ function About() {
 
           {/* Resume download */}
           <IgniteButton
-            href="./resume.pdf"
+            href={`${import.meta.env.BASE_URL}hsuanlingtu-resume.pdf`}
             download
             className="mt-8"
             >
@@ -96,7 +106,14 @@ function About() {
                 aria-label={social.name}
                 title={social.name}
             >
-                {social.icon}
+                <span
+                aria-hidden="true"
+                className="social-logo-gradient"
+                style={{
+                    maskImage: `url("${social.icon}")`,
+                    WebkitMaskImage: `url("${social.icon}")`,
+                }}
+                />
             </IgniteButton>
             ))}
             </div>
@@ -104,15 +121,20 @@ function About() {
         </motion.div>
 
         {/* Right: Portrait placeholder */}
-        <div className="relative flex min-h-[360px] items-end justify-center overflow-hidden md:min-h-[620px]">
-          <div
-            className="absolute inset-x-0 bottom-0 h-[80%] rounded-t-[48%] bg-gradient-to-b from-[#F8D9E8]/60 via-[#E4DDFB]/40 to-[#D5EEFF]/50"
+       {/* Right: Portrait */}
+        <div className="relative flex min-h-[500px] items-end justify-center md:min-h-[720px]">
+        {/* Background gradient shape */}
+        <div
+            className="absolute inset-x-0 bottom-0 h-[75%] rounded-t-[48%] bg-gradient-to-b from-[#F8D9E8]/60 via-[#E4DDFB]/40 to-[#D5EEFF]/50"
             aria-hidden="true"
-          />
+        />
 
-          <div className="relative z-10 mb-10 flex h-64 w-64 items-center justify-center rounded-full border border-white/70 bg-white/40 text-sm text-neutral-400 backdrop-blur-sm sm:h-80 sm:w-80 md:mb-0 md:h-[420px] md:w-[420px]">
-            Your Portrait
-          </div>
+        {/* Portrait image */}
+        <img
+            src={portrait}
+            alt="Portrait of Hsuan-Ling Tu"
+            className="relative z-10 h-[520px] w-auto max-w-none object-contain object-bottom md:h-[900px]"
+        />
         </div>
       </section>
 
