@@ -1,15 +1,24 @@
+
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router'
 import logo from '../assets/main-logo.svg'
-
-const navLinks = [
-  { label: 'Work', to: '/work' },
-  { label: 'Case Study', to: '/case-study' },
-  { label: 'About', to: '/about' },
-]
+import { useLocale } from '../useLocale.js'
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { t, isChinese, switchLocale } = useLocale()
+  const nav = t.nav
+
+  const navLinks = [
+    { label: nav.work, to: '/work' },
+    { label: nav.caseStudy, to: '/case-study' },
+    { label: nav.about, to: '/about' },
+  ].map((link) => ({
+    ...link,
+    to: isChinese
+      ? `/zh-tw${link.to}`
+      : link.to,
+  }))
 
   const linkClass = ({ isActive }) =>
     `whitespace-nowrap transition hover:text-black ${
@@ -23,14 +32,57 @@ function Header() {
         : 'text-neutral-600'
     }`
 
+    const languageSwitcher = (
+        <div
+          className="flex items-center gap-1"
+          aria-label="Language"
+        >
+          <button
+            type="button"
+            onClick={() => {
+              if (!isChinese) {
+                switchLocale()
+                setMobileMenuOpen(false)
+              }
+            }}
+            aria-pressed={isChinese}
+            className={`whitespace-nowrap rounded-full px-3 py-2 text-sm transition ${
+              isChinese
+                ? 'bg-neutral-100 font-medium text-neutral-900'
+                : 'text-neutral-400 hover:text-neutral-700'
+            }`}
+          >
+            臺灣華語
+          </button>
+      
+          <button
+            type="button"
+            onClick={() => {
+              if (isChinese) {
+                switchLocale()
+                setMobileMenuOpen(false)
+              }
+            }}
+            aria-pressed={!isChinese}
+            className={`whitespace-nowrap rounded-full px-3 py-2 text-sm transition ${
+              !isChinese
+                ? 'bg-neutral-100 font-medium text-neutral-900'
+                : 'text-neutral-400 hover:text-neutral-700'
+            }`}
+          >
+            English
+          </button>
+        </div>
+      )
+
   return (
     <header className="relative z-50 flex items-center justify-between px-6 py-5 sm:px-8 md:px-16 md:py-6">
       <Link
-        to="/"
+        to={isChinese ? '/zh-tw' : '/'}
         className="inline-flex shrink-0 items-center"
-        aria-label="Go to homepage"
+        aria-label={nav.homeLabel}
         onClick={() => setMobileMenuOpen(false)}
-      >
+        >
         <img
           src={logo}
           alt="Personal logo"
@@ -40,12 +92,12 @@ function Header() {
 
       {/* Desktop navigation */}
       <nav
-        aria-label="Main navigation"
+        aria-label={nav.mainNavigation}
         className="hidden items-center gap-6 text-sm md:flex"
       >
         {navLinks.map((link) => (
           <NavLink
-            key={link.label}
+            key={link.to}
             to={link.to}
             end
             className={linkClass}
@@ -53,6 +105,9 @@ function Header() {
             {link.label}
           </NavLink>
         ))}
+        <div className="ml-4 border-l border-neutral-200 pl-4">
+        {languageSwitcher}
+        </div>
       </nav>
 
       {/* Mobile menu button */}
@@ -60,14 +115,14 @@ function Header() {
         type="button"
         className="relative z-50 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-neutral-700 transition hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-400 md:hidden"
         aria-label={
-          mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'
+          mobileMenuOpen ? nav.closeMenu : nav.openMenu
         }
         aria-expanded={mobileMenuOpen}
         aria-controls="mobile-navigation"
         onClick={() => setMobileMenuOpen((open) => !open)}
       >
         <span className="sr-only">
-          {mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          {mobileMenuOpen ? nav.closeMenu : nav.openMenu}
         </span>
 
         <span
@@ -105,12 +160,12 @@ function Header() {
         aria-hidden={!mobileMenuOpen}
       >
         <nav
-          aria-label="Mobile navigation"
+          aria-label={nav.mobileNavigation}
           className="flex flex-col p-3"
         >
           {navLinks.map((link, index) => (
             <NavLink
-              key={link.label}
+              key={link.to}
               to={link.to}
               end
               tabIndex={mobileMenuOpen ? 0 : -1}
@@ -126,6 +181,10 @@ function Header() {
               {link.label}
             </NavLink>
           ))}
+
+        <div className="mt-2 border-t border-neutral-100 px-4 pt-3">
+        {languageSwitcher}
+        </div>
         </nav>
       </div>
     </header>

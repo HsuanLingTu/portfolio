@@ -1,0 +1,40 @@
+{
+  "nav": {
+    "work": "Work",
+    "caseStudy": "Case Study",
+    "about": "About",
+    "language": "繁中",
+    "homeLabel": "Go to homepage",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNavigation": "Main navigation",
+    "mobileNavigation": "Mobile navigation"
+  },
+  "home": {
+    "eyebrow": "UX / UI Designer · Product Thinker",
+    "titleFirst": "Observing",
+    "titleSecond": "the world.",
+    "titleThird": "Designing for",
+    "titleFourth": "change.",
+    "description": "I observe the world, uncover meaningful problems, and turn insights into thoughtful design that creates positive change.",
+    "exploreWork": "Explore selected work",
+    "exploreWorkLabel": "Explore selected work"
+  },
+  "about": {
+  "eyebrow": "A Little About Me",
+  "titleFirst": "Designing with",
+  "titleSecond": "intention.",
+  "paragraph1": "I’m a UX/UI designer and product thinker who enjoys exploring the relationship between people, technology, and the world around us.",
+  "paragraph2": "I approach design by observing real experiences, uncovering meaningful problems, and turning complex ideas into clear, thoughtful digital experiences.",
+  "paragraph3": "Beyond interfaces, I’m interested in the bigger picture: how products create value, how people connect, and how design can make a positive difference.",
+  "resume": "Download Resume",
+  "socialHeading": "Find me online",
+  "portraitAlt": "Portrait of Hsuan-Ling Tu"
+  },
+  "footer": {
+  "collaboration": "Open to meaningful collaborations.",
+  "contact": "Get in touch",
+  "copyright": "All rights reserved.",
+  "tagline": "Designed with intention."
+  }
+}

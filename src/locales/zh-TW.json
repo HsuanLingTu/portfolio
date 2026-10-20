@@ -1,0 +1,41 @@
+{
+    "nav": {
+      "work": "作品集",
+      "caseStudy": "專案研究",
+      "about": "關於我",
+      "language": "English",
+      "homeLabel": "回到首頁",
+      "openMenu": "開啟選單",
+      "closeMenu": "關閉選單",
+      "mainNavigation": "網頁導覽",
+      "mobileNavigation": "手機導覽"
+    },
+    "home": {
+    "eyebrow": "UX設計師 · 產品策略",
+    "titleFirst": "觀察",
+    "titleSecond": "世界。",
+    "titleThird": "設計，創造，與",
+    "titleFourth": "改變。",
+    "description": "我觀察世界、挖掘值得關注的問題，並將洞察轉化為細膩的設計，希望為社會帶來正向改變。",
+    "exploreWork": "探索精選作品",
+    "exploreWorkLabel": "探索精選作品"
+    },
+    "about": {
+    "eyebrow": "關於我",
+    "titleFirst": "用設計",
+    "titleSecond": "實踐初衷。",
+    "paragraph1": "我是一名UX設計師與產品策略，喜歡探索人、科技與我們所處的世界之間的關聯性。",
+    "paragraph2": "我透過觀察真實社會、挖掘值得關注的問題，將複雜的想法轉化為清晰且細膩的數位體驗。",
+    "paragraph3": "除了介面設計，我也關注更宏觀的議題：產品如何創造價值、人們如何建立連結，以及設計如何為社會帶來正向改變。",
+    "resume": "下載履歷",
+    "socialHeading": "在這些地方找到我",
+    "portraitAlt": "涂暄翎的個人照片"
+    },
+    "footer": {
+    "collaboration": "歡迎合作邀約。",
+    "contact": "與我聯絡",
+    "copyright": "保留所有權利。",
+    "tagline": "用設計實踐初衷。"
+    }
+  }
+  

@@ -7,6 +7,7 @@ import logo from './assets/main-logo.svg'
 import LiquidRibbon from './LiquidRibbon.jsx'
 import { Link } from 'react-router'
 import IgniteButton from './components/IgniteButton.jsx'
+import { useLocale } from './useLocale.js'
 
 const titleGradient =
   'bg-gradient-to-r from-[#F8D9E8] via-[#E4DDFB] to-[#D5EEFF] bg-clip-text font-semibold text-transparent'
@@ -21,6 +22,9 @@ const navLinks = [
 ]
 
 function App() {
+  const { t } = useLocale()
+  const home = t.home
+
   const heroRef = useRef(null)
   const sparkMotionRef = useRef(null)
 
@@ -48,14 +52,19 @@ function App() {
     }
   }
 
+  
   useEffect(() => {
     let cancelled = false
     let timer
+
+    // 語言或文字改變時，清除舊的背景截圖
+    setBackgroundCanvas(null)
 
     async function captureHero() {
       try {
         await document.fonts.ready
 
+        // 等待新語言的文字完成排版
         await new Promise((resolve) => {
           timer = setTimeout(resolve, 1800)
         })
@@ -69,6 +78,7 @@ function App() {
             !node.classList?.contains('liquid-glass-canvas'),
         })
 
+        // 避免舊語言的截圖覆蓋新語言
         if (cancelled) return
 
         setBackgroundCanvas(canvas)
@@ -78,7 +88,9 @@ function App() {
           height: canvas.height,
         })
       } catch (error) {
-        console.error('Hero background capture failed:', error)
+        if (!cancelled) {
+          console.error('Hero background capture failed:', error)
+        }
       }
     }
 
@@ -88,7 +100,8 @@ function App() {
       cancelled = true
       clearTimeout(timer)
     }
-  }, [])
+  }, [home])
+
 
   // 畫面切換至桌面尺寸時，自動關閉手機選單
   useEffect(() => {
@@ -270,7 +283,7 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          UX / UI Designer · Product Thinker
+          {home.eyebrow}
         </motion.p>
 
         <motion.h1
@@ -279,11 +292,11 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.15 }}
         >
-          <span className={titleGradient}>Observing</span>{' '}
-          the world.
+          <span className={titleGradient}>{home.titleFirst}</span>{' '}
+          {home.titleSecond}
           <br />
-          Designing for{' '}
-          <span className={titleGradient}>change.</span>
+          {home.titleThird}{' '}
+          <span className={titleGradient}>{home.titleFourth}</span>
         </motion.h1>
 
         <motion.p
@@ -292,20 +305,19 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.35 }}
         >
-          I observe the world, uncover meaningful problems, and turn insights
-          into thoughtful design that creates positive change.
+          {home.description}
         </motion.p>
 
         {/* Liquid Glass Explore Work CTA */}
         <IgniteButton
           href="#work"
-          aria-label="Explore selected work"
+          aria-label={home.exploreWorkLabel}
           className="relative z-20 mt-10"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <span>Explore selected work</span>
+          <span>{home.exploreWork}</span>
           <span aria-hidden="true">↘</span>
         </IgniteButton>
 

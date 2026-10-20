@@ -8,6 +8,7 @@ import threadsIcon from './assets/social/threads.svg'
 import instagramIcon from './assets/social/instagram.svg'
 import wroomIcon from './assets/social/wroom.svg'
 import portrait from './assets/portrait.png'
+import { useLocale } from './useLocale.js'
 
 const socialLinks = [
   {
@@ -33,6 +34,8 @@ const socialLinks = [
 ]
 
 function About() {
+  const { t } = useLocale()
+  const about = t.about
 
   return (
     <main className="min-h-screen bg-white text-neutral-900">
@@ -48,34 +51,28 @@ function About() {
           transition={{ duration: 0.7 }}
         >
           <p className="mb-5 text-xs tracking-[0.3em] text-neutral-400 uppercase">
-            A Little About Me
+            {about.eyebrow}
           </p>
 
           <h1 className="max-w-xl text-4xl leading-tight font-light tracking-tight sm:text-5xl md:text-6xl">
-            Designing with
+            {about.titleFirst}
             <br />
             <span className="bg-gradient-to-r from-[#F8D9E8] via-[#E4DDFB] to-[#D5EEFF] bg-clip-text font-semibold text-transparent">
-              intention.
+            {about.titleSecond}
             </span>
           </h1>
 
           <div className="mt-8 max-w-lg space-y-5 text-base leading-8 text-neutral-500">
             <p>
-              I’m a UX/UI designer and product thinker who enjoys exploring
-              the relationship between people, technology, and the world
-              around us.
+            {about.paragraph1}
             </p>
 
             <p>
-              I approach design by observing real experiences, uncovering
-              meaningful problems, and turning complex ideas into clear,
-              thoughtful digital experiences.
+            {about.paragraph2}
             </p>
 
             <p>
-              Beyond interfaces, I’m interested in the bigger picture:
-              how products create value, how people connect, and how design
-              can make a positive difference.
+            {about.paragraph3}
             </p>
           </div>
 
@@ -85,14 +82,14 @@ function About() {
             download
             className="mt-8"
             >
-            <span>Download Resume</span>
+            <span>{about.resume}</span>
             <span aria-hidden="true">↓</span>
             </IgniteButton>
 
           {/* Social links */}
           <div className="mt-10">
             <p className="mb-4 text-xs tracking-[0.2em] text-neutral-400 uppercase">
-              Find me online
+            {about.socialHeading}
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -132,7 +129,7 @@ function About() {
         {/* Portrait image */}
         <img
             src={portrait}
-            alt="Portrait of Hsuan-Ling Tu"
+            alt={about.portraitAlt}
             className="relative z-10 h-[520px] w-auto max-w-none object-contain object-bottom md:h-[900px]"
         />
         </div>
