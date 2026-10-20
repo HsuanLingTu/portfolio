@@ -8,7 +8,7 @@ function Footer() {
   
           <a
             href="mailto:hsuanlingtu@gmail.com"
-            className="w-fit text-sm underline underline-offset-4 transition hover:text-neutral-500"
+            className="relative z-10 w-fit text-sm underline underline-offset-4 transition hover:text-neutral-500"
           >
             Get in touch ↗
           </a>
