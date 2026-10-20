@@ -36,6 +36,40 @@
     "contact": "與我聯絡",
     "copyright": "保留所有權利。",
     "tagline": "用設計實踐初衷。"
-    }
+    },
+    "work": {
+    "eyebrow": "精選作品",
+    "title": "設計，化為體驗。",
+    "description": "從使用者體驗到視覺與動態設計，探索我如何將想法轉化為有意義的作品。",
+    "filters": {
+        "ariaLabel": "作品分類篩選",
+        "all": "全部",
+        "uxUi": "UX/UI",
+        "graphicDesign": "平面設計",
+        "motion": "動態設計"
+        }
+    },
+    "works": {
+        "project-one": {
+          "title": "The Scent Community",
+          "description": "以社群為核心的香氛體驗平台。"
+        },
+        "project-two": {
+          "title": "SeniorPal",
+          "description": "以使用者為中心的長者照護服務平台。"
+        },
+        "project-three": {
+          "title": "Smart Meetings 雜誌設計",
+          "description": "為企業打造的專業雜誌設計。"
+        },
+        "project-four": {
+          "title": "食譜動畫",
+          "description": "以動態設計呈現的食譜體驗。"
+        },
+        "project-five": {
+          "title": "Chionii Studio 品牌設計",
+          "description": "為Chionii Studio打造的品牌識別設計。"
+        }
+      }
   }
   

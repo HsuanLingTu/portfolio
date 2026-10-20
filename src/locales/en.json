@@ -24,7 +24,7 @@
   "eyebrow": "A Little About Me",
   "titleFirst": "Designing with",
   "titleSecond": "intention.",
-  "paragraph1": "I’m a UX/UI designer and product thinker who enjoys exploring the relationship between people, technology, and the world around us.",
+  "paragraph1": "Hi, I'm Hsuan. I’m a UX/UI designer and product thinker who enjoys exploring the relationship between people, technology, and the world around us.",
   "paragraph2": "I approach design by observing real experiences, uncovering meaningful problems, and turning complex ideas into clear, thoughtful digital experiences.",
   "paragraph3": "Beyond interfaces, I’m interested in the bigger picture: how products create value, how people connect, and how design can make a positive difference.",
   "resume": "Download Resume",
@@ -36,5 +36,39 @@
   "contact": "Get in touch",
   "copyright": "All rights reserved.",
   "tagline": "Designed with intention."
+  },
+  "work": {
+  "eyebrow": "Selected Work",
+  "title": "Selected work.",
+  "description": "From user experiences to visual and motion design, explore how I turn ideas into meaningful work.",
+  "filters": {
+    "ariaLabel": "Filter projects by category",
+    "all": "All",
+    "uxUi": "UX/UI",
+    "graphicDesign": "Graphic Design",
+    "motion": "Motion"
+    } 
+  },
+  "works": {
+    "project-one": {
+      "title": "The Scent Community",
+      "description": "Explore the world of fragrance through a community-driven platform."
+    },
+    "project-two": {
+      "title": "SeniorPal",
+      "description": "Take care of the elderly with a user-friendly app that connects seniors with caregivers."
+    },
+    "project-three": {
+      "title": "Magazine Design for Smart Meetings",
+      "description": "A visually engaging magazine design that enhances the reading experience for business professionals."
+    },
+    "project-four": {
+      "title": "Motion Recipe",
+      "description": "A dynamic motion graphics project that brings culinary creations to life through animation."
+    },
+    "project-five": {
+      "title": "Chionii Studio Branding",
+      "description": "A comprehensive branding project for Chionii Studio, including logo design, color palette, and visual identity."
+    }
   }
 }

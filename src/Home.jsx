@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { toCanvas } from 'html-to-image'
 import { motion } from 'motion/react'
 import logo from './assets/main-logo.svg'
-import LiquidRibbon from './LiquidRibbon.jsx'
+import LiquidRibbon from './components/LiquidRibbon.jsx'
 import { Link } from 'react-router'
 import IgniteButton from './components/IgniteButton.jsx'
 import { useLocale } from './useLocale.js'
@@ -310,7 +310,7 @@ function App() {
 
         {/* Liquid Glass Explore Work CTA */}
         <IgniteButton
-          href="#work"
+          href="/work"
           aria-label={home.exploreWorkLabel}
           className="relative z-20 mt-10"
           initial={{ opacity: 0, y: 16 }}
