@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react'
 import { toCanvas } from 'html-to-image'
 import { motion } from 'motion/react'
@@ -8,9 +7,15 @@ import LiquidRibbon from './LiquidRibbon.jsx'
 const titleGradient =
   'bg-gradient-to-r from-[#F8D9E8] via-[#E4DDFB] to-[#D5EEFF] bg-clip-text font-semibold text-transparent'
 
-// 火星從上方中央出發，沿著圓角邊框順時針移動
 const sparkPath =
   'M 120 1 H 216 A 23 23 0 0 1 239 24 A 23 23 0 0 1 216 47 H 24 A 23 23 0 0 1 1 24 A 23 23 0 0 1 24 1 H 120'
+
+const navLinks = [
+  { label: 'Work', href: '#work' },
+  { label: 'Case Study', href: '#work' },
+  { label: 'About', href: '#about' },
+  { label: 'Contact', href: '#contact' },
+]
 
 function App() {
   const heroRef = useRef(null)
@@ -18,6 +23,7 @@ function App() {
 
   const [backgroundCanvas, setBackgroundCanvas] = useState(null)
   const [ctaActive, setCtaActive] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   function startSpark() {
     setCtaActive(true)
@@ -81,6 +87,23 @@ function App() {
     }
   }, [])
 
+  // 畫面切換至桌面尺寸時，自動關閉手機選單
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)')
+
+    function handleResize(event) {
+      if (event.matches) {
+        setMobileMenuOpen(false)
+      }
+    }
+
+    mediaQuery.addEventListener('change', handleResize)
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleResize)
+    }
+  }, [])
+
   return (
     <main className="min-h-screen bg-white text-neutral-900">
       <style>{`
@@ -89,7 +112,6 @@ function App() {
           -webkit-tap-highlight-color: transparent;
         }
 
-        /* 常駐的粉、紫、藍色細邊框 */
         .work-cta__outline {
           position: absolute;
           inset: 0;
@@ -102,7 +124,6 @@ function App() {
           pointer-events: none;
         }
 
-        /* 玻璃按鈕表面 */
         .work-cta__surface {
           background: rgba(255, 255, 255, 0.68);
           backdrop-filter: blur(18px) saturate(150%);
@@ -125,7 +146,6 @@ function App() {
             0 4px 20px rgba(180, 160, 210, 0.1);
         }
 
-        /* 火星與尾巴只在 hover / 鍵盤 focus 時顯示 */
         .work-cta__spark {
           position: absolute;
           inset: 0;
@@ -153,7 +173,6 @@ function App() {
             drop-shadow(0 0 6px rgba(228, 221, 251, 0.45));
         }
 
-        /* 每層尾巴長度不同，往後逐漸變淡 */
         .work-cta__tail--long {
           --tail-length: 150;
           stroke-width: 3;
@@ -194,10 +213,6 @@ function App() {
           animation: ignite-near 6.5s linear infinite;
         }
 
-        /*
-          尾巴從火星後方延伸。
-          不同長度的線段同步移動，末端逐層淡出。
-        */
         @keyframes ignite-long {
           from { stroke-dashoffset: 150; }
           to { stroke-dashoffset: -850; }
@@ -239,37 +254,107 @@ function App() {
       `}</style>
 
       {/* Header */}
-      <header className="relative z-50 flex items-center justify-between gap-6 px-8 py-6 md:px-16">
-        <div className="flex min-w-0 items-center gap-5 md:gap-8">
-          <a href="index.html" className="inline-flex shrink-0 items-center">
-            <img
-              src={logo}
-              alt="Personal logo"
-              className="h-14 w-auto"
-            />
-          </a>
-        </div>
+      <header className="relative z-50 flex items-center justify-between px-6 py-5 sm:px-8 md:px-16 md:py-6">
+        {/* Logo */}
+        <a
+          href="#top"
+          className="inline-flex shrink-0 items-center"
+          aria-label="Go to homepage"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <img
+            src={logo}
+            alt="Personal logo"
+            className="h-12 w-auto sm:h-14"
+          />
+        </a>
 
-        <nav className="flex shrink-0 gap-4 text-xs text-neutral-500 sm:gap-6 sm:text-sm">
-          <a href="#work" className="transition hover:text-black">
-            Work
-          </a>
-          <a href="#work" className="transition hover:text-black">
-            Case Study
-          </a>
-          <a href="#about" className="transition hover:text-black">
-            About
-          </a>
-          <a href="#contact" className="transition hover:text-black">
-            Contact
-          </a>
+        {/* Desktop navigation */}
+        <nav
+          aria-label="Main navigation"
+          className="hidden items-center gap-6 text-sm text-neutral-500 md:flex"
+        >
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="whitespace-nowrap transition hover:text-black"
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
+
+        {/* Mobile hamburger button */}
+        <button
+          type="button"
+          className="relative z-50 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-neutral-700 transition hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-400 md:hidden"
+          aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setMobileMenuOpen((open) => !open)}
+        >
+          <span className="sr-only">
+            {mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          </span>
+
+          <span className="flex w-5 flex-col items-center gap-[5px]" aria-hidden="true">
+            <span
+              className={`h-[1.5px] w-5 rounded-full bg-current transition-transform duration-200 ${
+                mobileMenuOpen ? 'translate-y-[3.25px] rotate-45' : ''
+              }`}
+            />
+            <span
+              className={`h-[1.5px] w-5 rounded-full bg-current transition duration-200 ${
+                mobileMenuOpen ? 'scale-x-0 opacity-0' : ''
+              }`}
+            />
+            <span
+              className={`h-[1.5px] w-5 rounded-full bg-current transition-transform duration-200 ${
+                mobileMenuOpen ? '-translate-y-[9.75px] -rotate-45' : ''
+              }`}
+            />
+          </span>
+        </button>
+
+        {/* Mobile dropdown menu */}
+        <div
+          id="mobile-navigation"
+          className={`absolute top-full right-6 left-6 overflow-hidden rounded-2xl border border-neutral-100 bg-white/95 shadow-lg shadow-neutral-900/5 backdrop-blur-xl transition-all duration-200 md:hidden sm:right-8 sm:left-8 ${
+            mobileMenuOpen
+              ? 'visible translate-y-0 opacity-100'
+              : 'invisible -translate-y-2 pointer-events-none opacity-0'
+          }`}
+          aria-hidden={!mobileMenuOpen}
+        >
+          <nav
+            aria-label="Mobile navigation"
+            className="flex flex-col p-3"
+          >
+            {navLinks.map((link, index) => (
+              <a
+                key={link.label}
+                href={link.href}
+                tabIndex={mobileMenuOpen ? 0 : -1}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`rounded-xl px-4 py-3.5 text-sm text-neutral-600 transition hover:bg-neutral-50 hover:text-black ${
+                  index !== navLinks.length - 1
+                    ? 'border-b border-neutral-100'
+                    : ''
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </div>
       </header>
 
       {/* Hero */}
       <section
+        id="top"
         ref={heroRef}
-        className="relative isolate flex min-h-[75vh] flex-col justify-center overflow-visible px-8 py-20 md:px-16"
+        className="relative isolate flex min-h-[75vh] flex-col justify-center overflow-visible px-6 py-20 sm:px-8 md:px-16"
       >
         <motion.p
           className="mb-6 text-xs tracking-[0.3em] text-neutral-400 uppercase"
@@ -281,7 +366,7 @@ function App() {
         </motion.p>
 
         <motion.h1
-          className="relative z-0 max-w-5xl text-5xl leading-[1.08] font-light tracking-tight md:text-8xl"
+          className="relative z-0 max-w-5xl text-5xl leading-[1.08] font-light tracking-tight sm:text-6xl md:text-8xl"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.15 }}
@@ -320,16 +405,13 @@ function App() {
           onTapStart={startSpark}
           onTapCancel={stopSpark}
         >
-          {/* 靜態的粉紫藍外框 */}
           <span aria-hidden="true" className="work-cta__outline" />
 
-          {/* Glass surface */}
           <span className="work-cta__surface relative inline-flex items-center gap-3 rounded-full border border-white/80 px-6 py-3 text-sm">
             <span>Explore selected work</span>
             <span aria-hidden="true">↘</span>
           </span>
 
-          {/* Moving spark and fading tail */}
           <svg
             aria-hidden="true"
             className="work-cta__spark"
@@ -352,35 +434,30 @@ function App() {
               </linearGradient>
             </defs>
 
-            {/* Long, soft tail */}
             <path
               className="work-cta__tail work-cta__tail--long"
               d={sparkPath}
               pathLength="1000"
             />
 
-            {/* Middle tail */}
             <path
               className="work-cta__tail work-cta__tail--medium"
               d={sparkPath}
               pathLength="1000"
             />
 
-            {/* Shorter, brighter tail */}
             <path
               className="work-cta__tail work-cta__tail--short"
               d={sparkPath}
               pathLength="1000"
             />
 
-            {/* Bright section directly behind the spark */}
             <path
               className="work-cta__tail work-cta__tail--near"
               d={sparkPath}
               pathLength="1000"
             />
 
-            {/* Actual white spark head following the same path */}
             <circle className="work-cta__spark-head" r="3.5">
               <animateMotion
                 ref={sparkMotionRef}
@@ -409,7 +486,7 @@ function App() {
       {/* Contact */}
       <footer
         id="contact"
-        className="border-t border-neutral-100 px-8 py-10 md:px-16"
+        className="border-t border-neutral-100 px-6 py-10 sm:px-8 md:px-16"
       >
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <p className="text-sm text-neutral-500">
@@ -426,11 +503,12 @@ function App() {
 
         {/* Copyright */}
         <div className="mt-10 flex flex-col gap-2 border-t border-neutral-100 pt-5 text-xs text-neutral-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Hsuan-Ling Tu. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Hsuan-Ling Tu. All rights reserved.
+          </p>
           <p>Designed with intention.</p>
         </div>
       </footer>
-
     </main>
   )
 }
