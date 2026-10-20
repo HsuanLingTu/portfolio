@@ -83,10 +83,6 @@ function App() {
 
         setBackgroundCanvas(canvas)
 
-        console.log('Hero background refreshed:', {
-          width: canvas.width,
-          height: canvas.height,
-        })
       } catch (error) {
         if (!cancelled) {
           console.error('Hero background capture failed:', error)
@@ -323,7 +319,7 @@ function App() {
 
         {/* Liquid Glass background decoration */}
         <div
-          className="liquid-glass-canvas pointer-events-none absolute top-[55%] left-1/2 z-10 w-screen -translate-x-1/2 -translate-y-1/2 [&_*]:pointer-events-none"
+          className="liquid-ribbon-layer pointer-events-none absolute top-[55%] left-1/2 z-10 w-screen -translate-x-1/2 -translate-y-1/2 [&_*]:pointer-events-none"
           aria-hidden="true"
         >
           <LiquidRibbon
