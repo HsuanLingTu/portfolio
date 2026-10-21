@@ -305,17 +305,17 @@ function App() {
         </motion.p>
 
         {/* Liquid Glass Explore Work CTA */}
-        <IgniteButton
-          href="/work"
-          aria-label={home.exploreWorkLabel}
-          className="relative z-20 mt-10"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <span>{home.exploreWork}</span>
-          <span aria-hidden="true">↘</span>
-        </IgniteButton>
+        <Link to="/work" className="relative z-20 mt-10">
+          <IgniteButton
+            aria-label={home.exploreWorkLabel}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <span>{home.exploreWork}</span>
+            <span aria-hidden="true">↘</span>
+          </IgniteButton>
+        </Link>
 
         {/* Liquid Glass background decoration */}
         <div
