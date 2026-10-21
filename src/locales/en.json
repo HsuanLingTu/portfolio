@@ -92,9 +92,9 @@
       "title": "alive",
       "description": "Animals living in violancefree envionment."
     },
-    "wroom": {
+    "wroom-hub": {
       "title": "Wroom Hub case study",
       "description": "Create a space where creators can do more than share their work. They can collaborate, develop original ideas, and build IP they can truly call their own."
     }
-    }
+  }
 }

@@ -3,18 +3,18 @@ import wroomCover from '../assets/case-studies/case-2/cover-wroom.mp4'
 
 const caseStudies = [
     {
-        id: 'wroom',
+        id: 'wroom-hub',
         category: 'UX/UI',
         year: '2025–present',
         video: wroomCover,
-        link: '/work/project-a',
+        slug: '/wroom-hub',
     },
     {
         id: 'alive',
         category: 'Graphic Design',
         year: '2019',
         image: aliveCover,
-        link: '/work/project-a',
+        slug: '/alive',
     }
 ]
 

@@ -112,7 +112,10 @@ function CaseStudy() {
                     className="min-w-0"
                   >
                     <Link
-                      to={`/case-study/${caseStudy.slug}`}
+                      to={
+                        caseStudy.path ||
+                        `/case-study/${caseStudy.slug || caseStudy.id}`
+                      }
                       aria-label={`${title} — ${
                         isChinese
                           ? '查看專案研究'
