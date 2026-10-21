@@ -89,7 +89,14 @@ const fragmentShader = `
   }
 `
 
-function LiquidGlassCard({ image, title, isChinese, children }) {
+function LiquidGlassCard({
+  image,
+  video,
+  title,
+  isChinese,
+  children,
+  mediaAspect = '3/2',
+}) {
   const cardRef = useRef(null)
   const contentRef = useRef(null)
   const canvasRef = useRef(null)
@@ -347,14 +354,18 @@ function LiquidGlassCard({ image, title, isChinese, children }) {
   }, [])
 
   useEffect(() => {
+    if (video) {
+      setReady(false)
+      return
+    }
+  
     setReady(false)
     captureCard()
-
+  
     return () => {
-      // 避免舊的擷取任務覆蓋新內容。
       captureIdRef.current += 1
     }
-  }, [captureCard, image, title, isChinese])
+  }, [captureCard, image, video, title, isChinese])
 
   function handlePointerMove(event) {
     if (event.pointerType !== 'mouse') return
@@ -386,11 +397,26 @@ function LiquidGlassCard({ image, title, isChinese, children }) {
       <div
         ref={contentRef}
         className={`liquid-glass-content ${
-          ready ? 'is-captured' : ''
+          ready && !video ? 'is-captured' : ''
         }`}
       >
-        <div className="relative aspect-[3/2] overflow-hidden">
-          {image ? (
+        <div
+          className="relative overflow-hidden"
+          style={{ aspectRatio: mediaAspect.replace('/', ' / ') }}
+        >
+          {video ? (
+            <video
+              src={video}
+              poster={image}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label={title}
+              className="h-full w-full object-cover"
+            />
+          ) : image ? (
             <img
               src={image}
               alt={title}
@@ -411,13 +437,13 @@ function LiquidGlassCard({ image, title, isChinese, children }) {
         {children}
       </div>
 
-      <canvas
-        ref={canvasRef}
-        aria-hidden="true"
-        className={`liquid-glass-canvas ${
-          ready ? 'is-ready' : ''
-        }`}
-      />
+      {!video && (
+        <canvas
+          ref={canvasRef}
+          aria-hidden="true"
+          className={`liquid-glass-canvas ${ready ? 'is-ready' : ''}`}
+        />
+      )}
     </div>
   )
 }

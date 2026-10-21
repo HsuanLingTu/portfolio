@@ -50,25 +50,51 @@
         }
     },
     "works": {
-        "project-one": {
-          "title": "The Scent Community",
+        "scent-community": {
+          "title": "The Scent Community 香氛社群平台",
           "description": "以社群為核心的香氛體驗平台。"
         },
-        "project-two": {
-          "title": "SeniorPal",
+        "seniorpal": {
+          "title": "SeniorPal 長者照護服務平台",
           "description": "以使用者為中心的長者照護服務平台。"
         },
-        "project-three": {
+        "smart-meetings": {
           "title": "Smart Meetings 雜誌設計",
           "description": "為企業打造的專業雜誌設計。"
         },
-        "project-four": {
+        "motion-recipe": {
           "title": "食譜動畫",
           "description": "以動態設計呈現的食譜體驗。"
         },
-        "project-five": {
+        "chionii-studio": {
           "title": "Chionii Studio 品牌設計",
           "description": "為Chionii Studio打造的品牌識別設計。"
+        },
+        "bioplanet": {
+          "title": "The BioPlanet 食物鏈小遊戲",
+          "description": "以食物鏈為主題的小遊戲網站。"
+        }
+      },
+      "caseStudy": {
+        "eyebrow": "精選專案研究",
+        "title": "專案研究",
+        "description": "深入了解每個專案背後的思考、設計決策與執行過程。",
+        "filters": {
+          "all": "全部",
+          "uxUi": "UX/UI",
+          "graphicDesign": "平面設計",
+          "motion": "動態設計",
+          "ariaLabel": "依作品類別篩選案例研究"
+        }
+      },
+      "caseStudies": {
+        "alive": {
+          "title": "alive 零毛皮運動",
+          "description": "以使用者為中心的零毛皮運動網站設計，提升品牌形象與社會影響力。"
+        },
+        "wroom": {
+          "title": "Wroom Hub 平台專案研究",
+          "description": "打造一個讓創作者不只分享作品，更能透過合作創造、發展並擁有原創 IP 的地方。"
         }
       }
   }

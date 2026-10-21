@@ -116,6 +116,7 @@ function Work() {
                   >
                     <LiquidGlassCard
                       image={work.image}
+                      video={work.video}
                       title={worksText[work.id]?.title ?? work.title}
                       isChinese={isChinese}
                     >

@@ -50,25 +50,51 @@
     } 
   },
   "works": {
-    "project-one": {
+    "scent-community": {
       "title": "The Scent Community",
       "description": "Explore the world of fragrance through a community-driven platform."
     },
-    "project-two": {
+    "seniorpal": {
       "title": "SeniorPal",
       "description": "Take care of the elderly with a user-friendly app that connects seniors with caregivers."
     },
-    "project-three": {
+    "smart-meetings": {
       "title": "Magazine Design for Smart Meetings",
       "description": "A visually engaging magazine design that enhances the reading experience for business professionals."
     },
-    "project-four": {
+    "motion-recipe": {
       "title": "Motion Recipe",
       "description": "A dynamic motion graphics project that brings culinary creations to life through animation."
     },
-    "project-five": {
+    "chionii-studio": {
       "title": "Chionii Studio Branding",
       "description": "A comprehensive branding project for Chionii Studio, including logo design, color palette, and visual identity."
+    },
+    "bioplanet": {
+      "title": "The BioPlanet",
+      "description": "A game website about the food chain."
     }
-  }
+  },
+  "caseStudy": {
+    "eyebrow": "SELECTED CASE STUDIES",
+    "title": "Case Studies",
+    "description": "A closer look at the thinking, decisions, and design behind each project.",
+    "filters": {
+      "all": "All",
+      "uxUi": "UX/UI",
+      "graphicDesign": "Graphic Design",
+      "motion": "Motion",
+      "ariaLabel": "Filter case studies by category"
+    }
+  },
+  "caseStudies": {
+    "alive": {
+      "title": "alive",
+      "description": "Animals living in violancefree envionment."
+    },
+    "wroom": {
+      "title": "Wroom Hub case study",
+      "description": "Create a space where creators can do more than share their work. They can collaborate, develop original ideas, and build IP they can truly call their own."
+    }
+    }
 }
